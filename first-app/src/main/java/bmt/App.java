@@ -63,14 +63,10 @@ public class App
                 + "&page=" + page
                 + "&year=" + year;
             url = (isTeamOne == true)? url + "&team1=": url + "&team2=";
-            try {
-                url = url + URLEncoder.encode(team, "UTF-8");
-                String json = httpRequest(url);
-                JSONObject jsonObject = new JSONObject(json);
-                return addScoreInData(jsonObject.getJSONArray("data"), isTeamOne);
-            } catch (Exception e) {
-                return -1;
-            }
+            url = url + URLEncoder.encode(team, "UTF-8");
+            String json = httpRequest(url);
+            JSONObject jsonObject = new JSONObject(json);
+            return addScoreInData(jsonObject.getJSONArray("data"), isTeamOne);
         } catch (Exception e) {
             return -1;
         }
